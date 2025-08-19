@@ -1,11 +1,7 @@
-public class FreeABot {
+import java.util.Scanner;
+
+public class APleaseBot {
     public static void main(String[] args) {
-        String logo = " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n";
-//        System.out.println("Hello from\n" + logo);
 
         String line = "________________________________________\n";
 
@@ -15,6 +11,22 @@ public class FreeABot {
 
         String close = "Bye. Hope to see you again soon!\n";
 
-        System.out.println(line + greeting + line + close + line);
+
+
+        // Inputs
+        System.out.println(line + greeting + line);
+
+        Scanner scanner = new Scanner(System.in);
+
+
+        while(true) {
+            String input = scanner.nextLine();
+            if (input.equals("bye")) {
+                System.out.println(line + close + line);
+                break;
+            } else {
+                System.out.println(line + input + "\n" + line);
+            };
+        }
     }
 }
