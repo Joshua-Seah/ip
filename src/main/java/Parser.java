@@ -7,6 +7,7 @@ class Parser {
         if (input.startsWith("todo")) return new ToDoCommand(input);
         if (input.startsWith("deadline")) return new DeadlineCommand(input);
         if (input.startsWith("event")) return new EventCommand(input);
+        if (input.startsWith("delete")) return new DeleteCommand(input);
         throw new UnknownCommandException(input);
     }
 }
