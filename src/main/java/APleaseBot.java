@@ -24,6 +24,10 @@ public class APleaseBot {
             this.done = true;
         }
 
+        public void markUndone() {
+            this.done = false;
+        }
+
         public String toString() {
             return (done ? "[X]" : "[ ]") + " " + name;
         }
@@ -35,7 +39,7 @@ public class APleaseBot {
 
         String greeting =
                 "Hello! I'm APleaseBot\n" +
-                "What can I do for you?\n";
+                        "What can I do for you?\n";
 
         String close = "Bye. Hope to see you again soon!\n";
 
@@ -61,9 +65,33 @@ public class APleaseBot {
             } else if(input.equals("list")) {
                 String output = "";
                 for (int j = 0; j < itemCount; j++) {
-                    output += j+1 + ". " + taskList[j] + "\n";
+                    output += j+1 + ". " + taskList[j].toString() + "\n";
                 }
                 System.out.println(line + output + line);
+            } else if(input.startsWith("mark")) {
+                // Potential errors :
+                // array out of bounds
+                // non-integer argument
+                int num = Integer.parseInt(input.substring(5, 7));
+                taskList[num - 1].markDone();
+                System.out.println(
+                        line +
+                        "Nice! I've marked this task as done:\n" +
+                        taskList[num - 1].toString() + "\n" +
+                        line
+                );
+            } else if(input.startsWith("unmark")) {
+                // Potential errors :
+                // array out of bounds
+                // non-integer argument
+                int num = Integer.parseInt(input.substring(7, 9));
+                taskList[num - 1].markUndone();
+                System.out.println(
+                        line +
+                        "Ok! I've marked this task as not done yet:\n" +
+                        taskList[num - 1].toString() + "\n" +
+                        line
+                );
             } else {
                 taskList[itemCount] = new Task(input);
                 itemCount++;
@@ -72,3 +100,4 @@ public class APleaseBot {
         }
     }
 }
+
