@@ -8,13 +8,33 @@ public class APleaseBot {
         // Fields
         protected String name;
         protected boolean done;
+        protected int type;
+        protected String deadline;
+        protected String startTime;
 
+        static final int TODO=0, DEADLINE=1, EVENT=2;
 
 
         // constructor
-        public Task(String name) {
+        public Task(String name, int type) {
             this.name = name;
             this.done = false;
+            this.type = type;
+        }
+
+        public Task(String name, int type, String deadline) {
+            this.name = name;
+            this.done = false;
+            this.type = type;
+            this.deadline = deadline;
+        }
+
+        public Task(String name, int type, String startTime, String endTime) {
+            this.name = name;
+            this.done = false;
+            this.type = type;
+            this.startTime = startTime;
+            this.deadline = endTime;
         }
 
 
@@ -29,7 +49,31 @@ public class APleaseBot {
         }
 
         public String toString() {
-            return (done ? "[X]" : "[ ]") + " " + name;
+            String t = "";
+            String suffix = "";
+            boolean sNeeded = false;
+            switch (type) {
+                case TODO:
+                    t = "T";
+                    break;
+                case DEADLINE:
+                    t = "D";
+                    sNeeded = true;
+                    suffix = "by: " + this.deadline;
+                    break;
+                case EVENT:
+                    t = "E";
+                    sNeeded = true;
+                    suffix = "from: " + this.startTime + " to: " + this.deadline;
+                    break;
+                default:
+                    t ="err";
+                    break;
+            }
+            return  "[ " + t + " ]" +
+                    (done ? "[X]" : "[ ]") + " " +
+                    name +
+                    (sNeeded ? "(" + suffix + ")" : "");
         }
     }
 
@@ -72,7 +116,7 @@ public class APleaseBot {
                 // Potential errors :
                 // array out of bounds
                 // non-integer argument
-                int num = Integer.parseInt(input.substring(5, 7));
+                int num = Integer.parseInt(input.substring(5));
                 taskList[num - 1].markDone();
                 System.out.println(
                         line +
@@ -84,7 +128,7 @@ public class APleaseBot {
                 // Potential errors :
                 // array out of bounds
                 // non-integer argument
-                int num = Integer.parseInt(input.substring(7, 9));
+                int num = Integer.parseInt(input.substring(7));
                 taskList[num - 1].markUndone();
                 System.out.println(
                         line +
@@ -92,10 +136,46 @@ public class APleaseBot {
                         taskList[num - 1].toString() + "\n" +
                         line
                 );
-            } else {
-                taskList[itemCount] = new Task(input);
+            } else if(input.startsWith("todo")) {
+                String task = input.substring(5);
+                taskList[itemCount] = new Task(task, Task.TODO);
                 itemCount++;
-                System.out.println(line + "added: " + input + "\n" + line);
+                System.out.println(
+                        line +
+                        "Got it. I've added this task: \n" +
+                        "  " + taskList[itemCount - 1].toString() + "\n" +
+                        "Now you have " + itemCount + " tasks in the list" + "\n" +
+                        line
+                );
+            } else if(input.startsWith("deadline")) {
+                String[] sub = input.substring(9).split("\\\\by"); // solution to backslash character found using Google search
+                String task = sub[0];
+                String deadline = sub[1];
+                taskList[itemCount] = new Task(task, Task.DEADLINE, deadline);
+                itemCount++;
+                System.out.println(
+                        line +
+                                "Got it. I've added this task: \n" +
+                                "  " + taskList[itemCount - 1].toString() + "\n" +
+                                "Now you have " + itemCount + " tasks in the list" + "\n" +
+                                line
+                );
+            } else if (input.startsWith("event")) {
+                String[] sub = input.substring(6).split("\\\\"); // solution to backslash character found using Google search
+                String task = sub[0];
+                String startTime = sub[1].substring(5);
+                String endTime = sub[2].substring(3);
+                taskList[itemCount] = new Task(task, Task.EVENT, startTime, endTime);
+                itemCount++;
+                System.out.println(
+                        line +
+                                "Got it. I've added this task: \n" +
+                                "  " + taskList[itemCount - 1].toString() + "\n" +
+                                "Now you have " + itemCount + " tasks in the list" + "\n" +
+                                line
+                );
+            } else {
+                System.out.println("What?");
             };
         }
     }
