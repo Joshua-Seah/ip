@@ -36,7 +36,7 @@ public class EventCommand implements Command{
         tasks.add(new Event(task, startTime, endTime));
         System.out.println(
                 APleaseBot.line +
-                        "Got it. I've added this task: \n" +
+                        "Got it. I've added this task:\n" +
                         "  " + tasks.get(tasks.getItemCount() - 1).toString() + "\n" +
                         "Now you have " + tasks.getItemCount() + " tasks in the list" + "\n" +
                         APleaseBot.line

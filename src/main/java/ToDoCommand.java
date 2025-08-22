@@ -15,7 +15,7 @@ public class ToDoCommand implements Command{
         tasks.add(new Todo(task));
         System.out.println(
                 APleaseBot.line +
-                "Got it. I've added this task: \n" +
+                "Got it. I've added this task:\n" +
                 "  " + tasks.get(tasks.getItemCount() - 1).toString() + "\n" +
                 "Now you have " + tasks.getItemCount() + " tasks in the list" + "\n" +
                 APleaseBot.line

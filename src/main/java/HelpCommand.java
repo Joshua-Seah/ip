@@ -10,8 +10,8 @@ public class HelpCommand  implements Command {
                 "mark <task-number>\n" +
                 "unmark <task-number>\n" +
                 "todo <task-name>\n" +
-                "deadline <task-name> /by <deadline>\n" +
-                "event <event-name> /from <time> /to <time>\n" +
+                "deadline <task-name> \\by <deadline>\n" +
+                "event <event-name> \\from <time> \\to <time>\n" +
                 APleaseBot.line
         );
     }

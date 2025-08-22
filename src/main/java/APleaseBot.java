@@ -6,7 +6,7 @@ public class APleaseBot {
 
     public static final String greeting =
             "Hello! I'm APleaseBot\n" +
-                    "What can I do for you?\n";
+            "What can I do for you?\n";
 
     public static final String close = "Bye. Hope to see you again soon!\n";
 
@@ -34,6 +34,8 @@ public class APleaseBot {
                 System.out.println(line + greeting + line);
             }
         }
+
+        scanner.close();
 
     }
 }
