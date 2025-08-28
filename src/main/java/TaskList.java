@@ -38,7 +38,11 @@ public class TaskList {
         return false;
     }
 
-    public void loadData(List<String> list) throws DataException{
+    public TaskList() {
+
+    }
+
+    public TaskList(List<String> list) throws DataException{
         if (list.isEmpty()) throw new DataException("Data file empty");
         int elements = list.size();
         int i = 0;
