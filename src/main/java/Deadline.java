@@ -1,12 +1,18 @@
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 class Deadline extends Task {
-    private String by;
-    public Deadline(String name, boolean todo, String by) {
+
+    private LocalDateTime by;
+
+    public Deadline(String name, boolean todo, LocalDateTime by) {
         super(name, todo);
         this.by = by;
     }
+
     @Override
     public String toString() {
-        return "[D] " + (isDone ? "[X] " : "[ ] ") + name + " (by: " + by + ")";
+        return "[D] " + (isDone ? "[X] " : "[ ] ") + name + " (by: " + TimeFormatter.getTime(this.by) + ")";
     }
 
     @Override

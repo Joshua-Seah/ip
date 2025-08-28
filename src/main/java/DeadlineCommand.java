@@ -1,9 +1,6 @@
-import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.Files;
-import java.io.IOException;
-import java.util.List;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class DeadlineCommand implements Command{
     // fields
@@ -22,11 +19,11 @@ public class DeadlineCommand implements Command{
         if (sub.length != 2) throw new IllegalBotArgumentException("Wrong number of arguments!", input);
 
         String task = sub[0];
-        String deadline = sub[1];
+        String deadline = sub[1].stripLeading().stripTrailing();
         if (task.isEmpty()) throw new IllegalBotArgumentException("No Task stated:", input);
         if (deadline.isEmpty()) throw new IllegalBotArgumentException("No Deadline stated:", input);
 
-        Task newTask = new Deadline(task, false, deadline);
+        Task newTask = new Deadline(task, false, TimeFormatter.getStandard(deadline));
         tasks.add(newTask);
 
         System.out.println(

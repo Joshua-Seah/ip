@@ -34,13 +34,12 @@ public class EventCommand implements Command{
         String task = sub[0];
         if (task.isEmpty()) throw new IllegalBotArgumentException("No Task stated:", input);
 
-        String startTime = sub[1].substring(5);
+        String startTime = sub[1].substring(5).stripLeading().stripTrailing();
         if (startTime.isEmpty()) throw new IllegalBotArgumentException("No 'from' string stated:", input);
-        System.out.println("we got here");
-        String endTime = sub[2].substring(3);
+        String endTime = sub[2].substring(3).stripLeading().stripTrailing();
         if (endTime.isEmpty()) throw new IllegalBotArgumentException("No 'to' string stated:", input);
 
-        Task newTask = new Event(task, false, startTime, endTime);
+        Task newTask = new Event(task, false, TimeFormatter.getStandard(startTime), TimeFormatter.getStandard(endTime));
         tasks.add(newTask);
 
         System.out.println(

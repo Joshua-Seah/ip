@@ -1,7 +1,9 @@
+import java.time.LocalDateTime;
+
 class Event extends Task {
-    private String from;
-    private String to;
-    public Event(String name, boolean todo, String from, String to) {
+    private LocalDateTime from;
+    private LocalDateTime to;
+    public Event(String name, boolean todo, LocalDateTime from, LocalDateTime to) {
         super(name, todo);
         this.from = from;
         this.to = to;
@@ -9,7 +11,7 @@ class Event extends Task {
     @Override
     public String toString() {
         return "[E] " + (isDone ? "[X] " : "[ ] ") + name +
-                " (from: " + from + " to: " + to + ")";
+                " (from: " + TimeFormatter.getTime(this.from) + " to: " + TimeFormatter.getTime(this.to) + ")";
     }
 
     @Override
