@@ -1,5 +1,5 @@
 ________________________________________
-Hello! I'm APleaseBot
+Hello! I'm apleasebot.ui.APleaseBot
 What can I do for you?
 ________________________________________
 

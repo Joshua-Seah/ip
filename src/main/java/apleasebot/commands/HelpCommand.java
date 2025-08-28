@@ -1,3 +1,8 @@
+package apleasebot.commands;
+
+import apleasebot.tasks.TaskList;
+import apleasebot.ui.APleaseBot;
+
 public class HelpCommand  implements Command {
     @Override
     public void execute(TaskList tasks) {

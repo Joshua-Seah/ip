@@ -1,6 +1,10 @@
+package apleasebot.tasks;
+
+import apleasebot.ui.TimeFormatter;
+
 import java.time.LocalDateTime;
 
-class Event extends Task {
+public class Event extends Task {
     private LocalDateTime from;
     private LocalDateTime to;
     public Event(String name, boolean todo, LocalDateTime from, LocalDateTime to) {

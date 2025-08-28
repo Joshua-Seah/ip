@@ -1,7 +1,11 @@
-import java.io.File;
-import java.nio.file.Path;
+package apleasebot.parser;
 
-class Parser {
+import apleasebot.commands.*;
+import apleasebot.exceptions.APleaseBotException;
+import apleasebot.exceptions.UnknownCommandException;
+import apleasebot.ui.Storage;
+
+public class Parser {
     public static Command parse(String input, Storage data) throws APleaseBotException {
         if (input.equals("bye")) return new ByeCommand(data);
         if (input.equals("help")) return new HelpCommand();

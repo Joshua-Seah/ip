@@ -1,4 +1,6 @@
-abstract class Task {
+package apleasebot.tasks;
+
+public abstract class Task {
     protected String name;
     protected boolean isDone;
 
