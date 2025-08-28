@@ -1,9 +1,11 @@
-import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.Files;
-import java.io.IOException;
-import java.util.List;
+package apleasebot.commands;
+
+import apleasebot.exceptions.IllegalBotArgumentException;
+import apleasebot.tasks.Event;
+import apleasebot.tasks.Task;
+import apleasebot.tasks.TaskList;
+import apleasebot.ui.APleaseBot;
+import apleasebot.ui.TimeFormatter;
 
 public class EventCommand implements Command{
     // fields

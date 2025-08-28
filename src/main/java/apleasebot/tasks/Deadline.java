@@ -1,7 +1,10 @@
-import java.time.LocalDate;
+package apleasebot.tasks;
+
+import apleasebot.ui.TimeFormatter;
+
 import java.time.LocalDateTime;
 
-class Deadline extends Task {
+public class Deadline extends Task {
 
     private LocalDateTime by;
 

@@ -1,4 +1,6 @@
-class Todo extends Task {
+package apleasebot.tasks;
+
+public class Todo extends Task {
     public Todo(String name, boolean todo) {
         super(name, todo);
     }

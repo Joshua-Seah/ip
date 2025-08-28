@@ -1,4 +1,7 @@
-import java.time.LocalDate;
+package apleasebot.ui;
+
+import apleasebot.exceptions.WrongTimeFormatException;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
