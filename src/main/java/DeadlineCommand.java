@@ -1,3 +1,10 @@
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.Files;
+import java.io.IOException;
+import java.util.List;
+
 public class DeadlineCommand implements Command{
     // fields
     private String input;
@@ -19,11 +26,13 @@ public class DeadlineCommand implements Command{
         if (task.isEmpty()) throw new IllegalBotArgumentException("No Task stated:", input);
         if (deadline.isEmpty()) throw new IllegalBotArgumentException("No Deadline stated:", input);
 
-        tasks.add(new Deadline(task, deadline));
+        Task newTask = new Deadline(task, false, deadline);
+        tasks.add(newTask);
+
         System.out.println(
                 APleaseBot.line +
                 "Got it. I've added this task:\n" +
-                "  " + tasks.get(tasks.getItemCount() - 1).toString() + "\n" +
+                "  " + newTask + "\n" +
                 "Now you have " + tasks.getItemCount() + " tasks in the list" + "\n" +
                 APleaseBot.line
         );

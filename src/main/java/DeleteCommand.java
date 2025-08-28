@@ -1,3 +1,10 @@
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.Files;
+import java.io.IOException;
+import java.util.List;
+
 public class DeleteCommand implements Command{
     // fields
     private String input;
@@ -13,10 +20,12 @@ public class DeleteCommand implements Command{
         if (!isInt(input, 7)) throw new IllegalBotArgumentException("Argument is not integer!", input); // non-integer argument
 
         int num = Integer.parseInt(input.substring(7));
-        if (num < 1 || num > tasks.getItemCount()) throw new IllegalBotArgumentException("Item out of bounds!", input); // array out of bounds
+        if (num < 1 || num > tasks.getItemCount())
+            throw new IllegalBotArgumentException("Item out of bounds!", input); // array out of bounds
 
-        String removed = tasks.get(num -1).toString();
+        String removed = tasks.get(num - 1).toString();
         tasks.remove(num - 1);
+
         System.out.println(
                 APleaseBot.line +
                         "Got it. I've removed this task: \n" +
