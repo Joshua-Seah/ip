@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,11 +51,11 @@ public class TaskList {
                 i++;
                 continue;
             case "D":
-                this.add(new Deadline(str[2], boolify(str[1]), str[3]));
+                this.add(new Deadline(str[2], boolify(str[1]), LocalDateTime.parse(str[3])));
                 i++;
                 continue;
             case "E":
-                this.add(new Event(str[2], boolify(str[1]), str[3], str[4]));
+                this.add(new Event(str[2], boolify(str[1]), LocalDateTime.parse(str[3]), LocalDateTime.parse(str[4])));
                 i++;
                 continue;
             default:

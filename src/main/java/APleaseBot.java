@@ -27,7 +27,6 @@ public class APleaseBot {
         TaskList taskList = new TaskList();
 
         // Initialise input reader & data storage location
-        System.out.println(line + greeting + line);
         Scanner scanner = new Scanner(System.in);
 
         // Find the storage file else initialise it
@@ -69,11 +68,8 @@ public class APleaseBot {
 
 
         while (true) {
+            System.out.println(line + greeting + line);
             String input = scanner.nextLine();
-            if (input.equals("bye")) {
-                System.out.println(line + close + line);
-
-            }
             try {
                 Command command = Parser.parse(input, dataPath);
                 command.execute(taskList);
@@ -82,8 +78,6 @@ public class APleaseBot {
                 }
             } catch (Exception e) {
                 System.out.println(line + "Something went wrong!\n" + e.getMessage() + "\n" + line);
-            } finally {
-                System.out.println(line + greeting + line);
             }
         }
 
