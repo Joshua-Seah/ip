@@ -17,61 +17,32 @@ public class APleaseBot {
 
     public static final String close = "Bye. Hope to see you again soon!\n";
 
-    private static final File dir = new File("src/data");
-    private static final String dataName = "APleaseBot.txt";
-    private static File data;
-    private static Path dataPath;
+    private Storage storage;
+    private TaskList taskList;
+    private Ui ui;
 
-    public static void main(String[] args) throws APleaseBotException, FileNotFoundException {
-        // Initialise list
-        TaskList taskList = new TaskList();
-
-        // Initialise input reader & data storage location
-        Scanner scanner = new Scanner(System.in);
-
-        // Find the storage file else initialise it
-        if (!dir.exists()) {
-            try {
-                dir.mkdirs();
-            } catch (Exception e) {
-                System.err.println("Error creating directory: " + e.getMessage());
-            }
-        }
-        File[] files = dir.listFiles();
-        if (files == null) {
-            try {
-                File newFile = new File(dir, dataName);
-                newFile.createNewFile();
-            } catch (IOException e) {
-                System.err.println("Error creating data file: " + e.getMessage());
-            }
-        }
-        for (File file : files) {
-            if (file.isFile() && file.getName().equals(dataName)) {
-                data = new File(dir, dataName);
-                dataPath = Paths.get(data.getPath());
-            }
-        }
-
-        // Initialise instance memory
-        List<String> entries;
+    // constructor
+    public APleaseBot(String path) {
+        ui = new Ui();
+        storage = new Storage(path);
         try {
-            entries = Files.readAllLines(dataPath);
-        } catch (IOException e) {
-            throw new APleaseBotException("Err reading data file: " + e.getMessage());
+            taskList = new TaskList(storage.load());
+        } catch (APleaseBotException e) {
+            ui.showLoadingError();
+            taskList = new TaskList();
         }
+    }
 
-        // Load data onto memory
-        if (!entries.isEmpty()) {
-            taskList.loadData(entries);
-        }
+    // methods
+    public void run() {
 
+        Scanner scanner = ui.start();
 
         while (true) {
             System.out.println(line + greeting + line);
             String input = scanner.nextLine();
             try {
-                Command command = Parser.parse(input, dataPath);
+                Command command = Parser.parse(input, storage);
                 command.execute(taskList);
                 if (command instanceof ByeCommand) {
                     break;
@@ -80,9 +51,11 @@ public class APleaseBot {
                 System.out.println(line + "Something went wrong!\n" + e.getMessage() + "\n" + line);
             }
         }
+        ui.close();
+    }
 
-        scanner.close();
-
+    public static void main(String[] args) throws APleaseBotException, FileNotFoundException {
+        new APleaseBot("src/data/APleaseBot.txt").run();
     }
 }
 
