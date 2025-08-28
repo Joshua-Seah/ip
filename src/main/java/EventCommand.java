@@ -1,3 +1,10 @@
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.Files;
+import java.io.IOException;
+import java.util.List;
+
 public class EventCommand implements Command{
     // fields
     private String input;
@@ -33,11 +40,13 @@ public class EventCommand implements Command{
         String endTime = sub[2].substring(3);
         if (endTime.isEmpty()) throw new IllegalBotArgumentException("No 'to' string stated:", input);
 
-        tasks.add(new Event(task, startTime, endTime));
+        Task newTask = new Event(task, false, startTime, endTime);
+        tasks.add(newTask);
+
         System.out.println(
                 APleaseBot.line +
                         "Got it. I've added this task:\n" +
-                        "  " + tasks.get(tasks.getItemCount() - 1).toString() + "\n" +
+                        "  " + newTask.toString() + "\n" +
                         "Now you have " + tasks.getItemCount() + " tasks in the list" + "\n" +
                         APleaseBot.line
         );

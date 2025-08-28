@@ -1,5 +1,9 @@
+import java.io.File;
+import java.nio.file.Path;
+
 class Parser {
-    public static Command parse(String input) throws APleaseBotException {
+    public static Command parse(String input, Path data) throws APleaseBotException {
+        if (input.equals("bye")) return new ByeCommand(data);
         if (input.equals("help")) return new HelpCommand();
         if (input.equals("list")) return new ListCommand();
         if (input.startsWith("mark")) return new MarkCommand(input);
