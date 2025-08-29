@@ -5,7 +5,6 @@ import apleasebot.commands.Command;
 import apleasebot.exceptions.APleaseBotException;
 import apleasebot.parser.Parser;
 import apleasebot.tasks.TaskList;
-
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
