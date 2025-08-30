@@ -1,12 +1,15 @@
 package apleasebot.commands;
 
-import apleasebot.ui.Storage;
 import apleasebot.tasks.TaskList;
 import apleasebot.ui.APleaseBot;
+import apleasebot.ui.Storage;
 
-public class ByeCommand  implements Command {
+/**
+ * Encapsulates the logic that is run when the user types 'bye'
+ */
+public class ByeCommand implements Command {
     // fields
-    Storage storage;
+    private final Storage storage;
 
     // constructor
     public ByeCommand(Storage storage) {
@@ -16,6 +19,6 @@ public class ByeCommand  implements Command {
     @Override
     public void execute(TaskList taskList) {
         storage.close(taskList);
-        System.out.println(APleaseBot.line + APleaseBot.close + APleaseBot.line);
+        System.out.println(APleaseBot.LINE + APleaseBot.CLOSE + APleaseBot.LINE);
     }
 }

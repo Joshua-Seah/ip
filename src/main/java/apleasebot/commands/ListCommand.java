@@ -4,11 +4,16 @@ import apleasebot.exceptions.DataException;
 import apleasebot.tasks.TaskList;
 import apleasebot.ui.APleaseBot;
 
+/**
+ * Encapsulates the logic for when the user says list
+ */
 public class ListCommand implements Command {
 
     @Override
     public void execute(TaskList tasks) {
-        if (tasks.getItemCount() < 1) throw new DataException("No items loaded/stored yet");
-        System.out.println(APleaseBot.line + tasks.list() + APleaseBot.line);
+        if (tasks.getItemCount() < 1) {
+            throw new DataException("No items loaded/stored yet");
+        }
+        System.out.println(APleaseBot.LINE + tasks.list() + APleaseBot.LINE);
     }
 }

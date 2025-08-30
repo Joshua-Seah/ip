@@ -6,9 +6,12 @@ import apleasebot.tasks.TaskList;
 import apleasebot.tasks.Todo;
 import apleasebot.ui.APleaseBot;
 
-public class ToDoCommand implements Command{
+/**
+ * Encapsulates the logic for when a user says todo
+ */
+public class ToDoCommand implements Command {
     // fields
-    String input;
+    private final String input;
 
     // constructor
     public ToDoCommand(String input) {
@@ -17,7 +20,9 @@ public class ToDoCommand implements Command{
 
     @Override
     public void execute(TaskList tasks) {
-        if (input.length() < 5) throw new IllegalBotArgumentException("No argument found!", input); // no argument
+        if (input.length() < 5) {
+            throw new IllegalBotArgumentException("No argument found!", input); // no argument
+        }
 
         String task = input.substring(5);
 
@@ -25,11 +30,11 @@ public class ToDoCommand implements Command{
         tasks.add(newTask);
 
         System.out.println(
-                APleaseBot.line +
-                "Got it. I've added this task:\n" +
-                "  " + newTask.toString() + "\n" +
-                "Now you have " + tasks.getItemCount() + " tasks in the list" + "\n" +
-                APleaseBot.line
+                APleaseBot.LINE
+                        + "Got it. I've added this task:\n"
+                        + "  " + newTask.toString() + "\n"
+                        + "Now you have " + tasks.getItemCount() + " tasks in the list" + "\n"
+                        + APleaseBot.LINE
         );
     }
 }
