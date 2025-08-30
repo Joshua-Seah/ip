@@ -1,12 +1,12 @@
 package apleasebot.commands;
 
-import apleasebot.ui.Storage;
 import apleasebot.tasks.TaskList;
 import apleasebot.ui.APleaseBot;
+import apleasebot.ui.Storage;
 
-public class ByeCommand  implements Command {
+public class ByeCommand implements Command {
     // fields
-    Storage storage;
+    private Storage storage;
 
     // constructor
     public ByeCommand(Storage storage) {
