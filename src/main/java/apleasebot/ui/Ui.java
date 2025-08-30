@@ -2,9 +2,12 @@ package apleasebot.ui;
 
 import java.util.Scanner;
 
+/**
+ * Class that encapsulates the logic required to intake user commands
+ */
 public class Ui {
     // fields
-    private Scanner scanner;
+    private final Scanner scanner;
 
     // constructor
     public Ui() {

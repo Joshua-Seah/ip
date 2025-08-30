@@ -1,5 +1,8 @@
 package apleasebot.tasks;
 
+/**
+ * Encapsulates the logic for the Todo Task
+ */
 public class Todo extends Task {
     public Todo(String name, boolean todo) {
         super(name, todo);

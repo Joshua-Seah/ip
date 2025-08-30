@@ -2,9 +2,19 @@ package apleasebot.commands;
 
 import apleasebot.tasks.TaskList;
 
+/**
+ * Interface that provides the skeleton of what each Command class should implement
+ * Also provides a function to make parsing of inputs easier
+ */
 public interface Command {
     void execute(TaskList tasks);
 
+    /**
+     * Returns a boolean that confirms if the argument can be parsed into an Integer
+     * @param s The string argument to be checked
+     * @param bIdx The beginning index of the supposed integer
+     * @return Boolean value
+     */
     default boolean isInt(String s, int bIdx) {
         int x = 0;
         try {
