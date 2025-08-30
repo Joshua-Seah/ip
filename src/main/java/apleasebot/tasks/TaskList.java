@@ -1,5 +1,8 @@
 package apleasebot.tasks;
 
+import apleasebot.exceptions.APleaseBotException;
+import apleasebot.exceptions.DataException;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -89,9 +92,27 @@ public class TaskList {
         if (i == 0) {
             return false;
         }
-        if (i == 1) {
-            return true;
+        return i == 1;
+    }
+
+    /**
+     * Method that filters and returns a new TaskList containing tasks that contained the keyphrase searched
+     * @param keyphrase Keyword or phrase searched by user
+     * @return Filtered TaskList
+     */
+    public TaskList search(String keyphrase) {
+        TaskList copiedList = new TaskList();
+        TaskList returnList;
+        for (int i = 0; i < this.getItemCount(); i++) {
+            copiedList.add(this.get(i));
         }
-        return false;
+        returnList = new TaskList(
+                copiedList.tasks.stream()
+                        .filter(task -> task.name.contains(keyphrase))
+                        .map(Task::translate)
+                        .toList()
+        );
+
+        return returnList;
     }
 }

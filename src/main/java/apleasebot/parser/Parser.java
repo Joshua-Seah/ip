@@ -5,6 +5,7 @@ import apleasebot.commands.Command;
 import apleasebot.commands.DeadlineCommand;
 import apleasebot.commands.DeleteCommand;
 import apleasebot.commands.EventCommand;
+import apleasebot.commands.FindCommand;
 import apleasebot.commands.HelpCommand;
 import apleasebot.commands.ListCommand;
 import apleasebot.commands.MarkCommand;
@@ -29,37 +30,36 @@ public class Parser {
      * @throws APleaseBotException Generic exception that can be thrown related to the command creation and parsing
      */
     public static Command parse(String input, Storage data) throws APleaseBotException {
-        switch (input) {
-        case "bye" -> {
+        if (input.equals("bye")) {
             return new ByeCommand(data);
         }
-        case "help" -> {
+        if (input.equals("help")) {
             return new HelpCommand();
         }
-        case "list" -> {
+        if (input.equals("list")) {
             return new ListCommand();
         }
-        case "mark" -> {
+        if (input.startsWith("mark")) {
             return new MarkCommand(input);
         }
-        case "unmark" -> {
+        if (input.startsWith("unmark")) {
             return new UnmarkCommand(input);
         }
-        case "todo" -> {
+        if (input.startsWith("todo")) {
             return new ToDoCommand(input);
         }
-        case "deadline" -> {
+        if (input.startsWith("deadline")) {
             return new DeadlineCommand(input);
         }
-        case "event" -> {
+        if (input.startsWith("event")) {
             return new EventCommand(input);
         }
-        case "delete" -> {
+        if (input.startsWith("delete")) {
             return new DeleteCommand(input);
         }
-        default -> {
-            throw new UnknownCommandException(input);
+        if (input.startsWith("find")) {
+            return new FindCommand(input);
         }
-        }
+        throw new UnknownCommandException(input);
     }
 }

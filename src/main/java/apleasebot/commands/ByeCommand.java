@@ -1,8 +1,8 @@
 package apleasebot.commands;
 
-import apleasebot.ui.Storage;
 import apleasebot.tasks.TaskList;
 import apleasebot.ui.APleaseBot;
+import apleasebot.ui.Storage;
 
 /**
  * Encapsulates the logic that is run when the user types 'bye'

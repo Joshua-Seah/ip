@@ -20,6 +20,8 @@ public class HelpCommand implements Command {
                         + "todo <task-name>\n"
                         + "deadline <task-name> \\by <deadline>\n"
                         + "event <event-name> \\from <time> \\to <time>\n"
+                        + "delete <task-number>\n"
+                        + "find <keyphrase>\n"
                         + APleaseBot.LINE
         );
     }
