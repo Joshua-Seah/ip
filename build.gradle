@@ -35,6 +35,7 @@ application {
 shadowJar {
     archiveBaseName = "APleaseBot"
     archiveClassifier = null
+    archiveFileName = "APleaseBot.jar"
 }
 
 run{
