@@ -1,8 +1,8 @@
 package apleasebot.commands;
 
-import apleasebot.ui.Storage;
 import apleasebot.tasks.TaskList;
 import apleasebot.ui.APleaseBot;
+import apleasebot.ui.Storage;
 
 public class ByeCommand  implements Command {
     // fields
@@ -16,6 +16,6 @@ public class ByeCommand  implements Command {
     @Override
     public void execute(TaskList taskList) {
         storage.close(taskList);
-        System.out.println(APleaseBot.line + APleaseBot.close + APleaseBot.line);
+        System.out.println(APleaseBot.LINE + APleaseBot.CLOSE + APleaseBot.LINE);
     }
 }

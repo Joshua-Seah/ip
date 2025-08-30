@@ -10,13 +10,13 @@ import java.util.Scanner;
 
 public class APleaseBot {
 
-    public static final String line = "________________________________________\n";
+    public static final String LINE = "________________________________________\n";
 
-    public static final String greeting =
+    public static final String GREETING =
             "Hello! I'm APleaseBot\n" +
             "What can I do for you?\n";
 
-    public static final String close = "Bye. Hope to see you again soon!\n";
+    public static final String CLOSE = "Bye. Hope to see you again soon!\n";
 
     private Storage storage;
     private TaskList taskList;
