@@ -35,19 +35,19 @@ public class TaskList {
         int numOfElements = list.size();
         int i = 0;
 
-        while (i < elements) {
+        while (i < numOfElements) {
             String[] str = list.get(i).split(",");
             switch (str[0]) {
             case "T":
-                this.add(new Todo(str[2], boolify(str[1])));
+                this.addTask(new Todo(str[2], boolify(str[1])));
                 i++;
                 continue;
             case "D":
-                this.add(new Deadline(str[2], boolify(str[1]), LocalDateTime.parse(str[3])));
+                this.addTask(new Deadline(str[2], boolify(str[1]), LocalDateTime.parse(str[3])));
                 i++;
                 continue;
             case "E":
-                this.add(new Event(str[2], boolify(str[1]), LocalDateTime.parse(str[3]), LocalDateTime.parse(str[4])));
+                this.addTask(new Event(str[2], boolify(str[1]), LocalDateTime.parse(str[3]), LocalDateTime.parse(str[4])));
                 i++;
                 continue;
             default:
@@ -82,7 +82,7 @@ public class TaskList {
         }
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < this.getItemCount(); i++) {
-            sb.append(i + 1).append(". ").append(this.get(i)).append("\n");
+            sb.append(i + 1).append(". ").append(this.getTask(i)).append("\n");
         }
         return sb.toString();
     }
@@ -104,12 +104,12 @@ public class TaskList {
         TaskList copiedList = new TaskList();
         TaskList returnList;
         for (int i = 0; i < this.getItemCount(); i++) {
-            copiedList.add(this.get(i));
+            copiedList.addTask(this.getTask(i));
         }
         returnList = new TaskList(
                 copiedList.tasks.stream()
-                        .filter(task -> task.name.contains(keyphrase))
-                        .map(Task::translate)
+                        .filter(task -> task.desc.contains(keyphrase))
+                        .map(Task::translateTaskToText)
                         .toList()
         );
 

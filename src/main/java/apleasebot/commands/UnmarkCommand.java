@@ -31,12 +31,12 @@ public class UnmarkCommand implements Command {
         if (num < 1 || num > tasks.getItemCount()) {
             throw new IllegalBotArgumentException("Item out of bounds!", input); // index out of bounds of list
         }
-        tasks.get(num - 1).markUndone();
+        tasks.getTask(num - 1).markUndone();
 
         System.out.println(
                 APleaseBot.LINE
                         + "Ok! I've marked this task as not done yet:\n"
-                        + tasks.get(num - 1).toString() + "\n"
+                        + tasks.getTask(num - 1).toString() + "\n"
                         + APleaseBot.LINE
         );
     }

@@ -14,7 +14,7 @@ public abstract class Task {
      * @param isDone Completion status of the task for storage and loading purposes
      */
     public Task(String name, boolean isDone) {
-        this.name = name;
+        this.desc = name;
         this.isDone = isDone;
     }
 
@@ -27,6 +27,6 @@ public abstract class Task {
     public int checkDone() {
         return this.isDone ? 1 : 0;
     };
-    public abstract String translate();
+    public abstract String translateTaskToText();
     public abstract String toString();
 }

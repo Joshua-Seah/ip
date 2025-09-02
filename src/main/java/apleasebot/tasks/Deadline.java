@@ -19,16 +19,16 @@ public class Deadline extends Task {
      */
     public Deadline(String name, boolean todo, LocalDateTime by) {
         super(name, todo);
-        this.by = by;
+        this.completeBy = by;
     }
 
     @Override
     public String toString() {
-        return "[D] " + (isDone ? "[X] " : "[ ] ") + name + " (by: " + TimeFormatter.getTime(this.by) + ")";
+        return "[D] " + (isDone ? "[X] " : "[ ] ") + desc + " (by: " + TimeFormatter.getTime(this.completeBy) + ")";
     }
 
     @Override
     public String translateTaskToText() {
-        return "D," + this.done() + "," + this.name + "," + this.by;
+        return "D," + this.checkDone() + "," + this.desc + "," + this.completeBy;
     }
 }

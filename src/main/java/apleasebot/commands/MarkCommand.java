@@ -31,12 +31,12 @@ public class MarkCommand implements Command {
             throw new IllegalBotArgumentException("Item out of bounds!", input); // index out of bounds of list
         }
 
-        tasks.get(num - 1).markDone();
+        tasks.getTask(num - 1).markDone();
 
         System.out.println(
                 APleaseBot.LINE
                         + "Nice! I've marked this task as done:\n"
-                        + tasks.get(num - 1).toString() + "\n"
+                        + tasks.getTask(num - 1).toString() + "\n"
                         + APleaseBot.LINE
         );
     }

@@ -20,17 +20,17 @@ public class Event extends Task {
      */
     public Event(String name, boolean todo, LocalDateTime from, LocalDateTime to) {
         super(name, todo);
-        this.from = from;
-        this.to = to;
+        this.startTime = from;
+        this.endTime = to;
     }
     @Override
     public String toString() {
-        return "[E] " + (isDone ? "[X] " : "[ ] ") + name
-                + " (from: " + TimeFormatter.getTime(this.from) + " to: " + TimeFormatter.getTime(this.to) + ")";
+        return "[E] " + (isDone ? "[X] " : "[ ] ") + desc
+                + " (from: " + TimeFormatter.getTime(this.startTime) + " to: " + TimeFormatter.getTime(this.endTime) + ")";
     }
 
     @Override
-    public String translate() {
-        return "E," + this.done() + "," + this.name + "," + this.from + "," + this.to;
+    public String translateTaskToText() {
+        return "E," + this.checkDone() + "," + this.desc + "," + this.startTime + "," + this.endTime;
     }
 }
