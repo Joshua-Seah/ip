@@ -28,7 +28,7 @@ public class Deadline extends Task {
     }
 
     @Override
-    public String translate() {
+    public String translateTaskToText() {
         return "D," + this.done() + "," + this.name + "," + this.by;
     }
 }
