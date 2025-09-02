@@ -5,7 +5,7 @@ package apleasebot.tasks;
  * Also provides some methods for the children classes to inherit
  */
 public abstract class Task {
-    protected String name;
+    protected String desc;
     protected boolean isDone;
 
     /**
@@ -24,7 +24,7 @@ public abstract class Task {
     public void markUndone() {
         this.isDone = false;
     }
-    public int done() {
+    public int checkDone() {
         return this.isDone ? 1 : 0;
     };
     public abstract String translate();

@@ -32,7 +32,7 @@ public class TaskList {
         if (list.isEmpty()) {
             throw new DataException("Data file empty");
         }
-        int elements = list.size();
+        int numOfElements = list.size();
         int i = 0;
 
         while (i < elements) {
@@ -56,15 +56,15 @@ public class TaskList {
         }
     }
 
-    public void add(Task task) {
+    public void addTask(Task task) {
         this.tasks.add(task);
     }
 
-    public void remove(int index) {
+    public void removeTask(int index) {
         this.tasks.remove(index);
     }
 
-    public Task get(int index) {
+    public Task getTask(int index) {
         return this.tasks.get(index);
     }
 

@@ -8,8 +8,8 @@ import apleasebot.ui.TimeFormatter;
  * Encapsulates the event logic
  */
 public class Event extends Task {
-    private final LocalDateTime from;
-    private final LocalDateTime to;
+    private final LocalDateTime startTime;
+    private final LocalDateTime endTime;
 
     /**
      * Constructor for the event class
