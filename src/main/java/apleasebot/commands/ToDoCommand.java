@@ -27,7 +27,7 @@ public class ToDoCommand implements Command {
         String task = input.substring(5);
 
         Task newTask = new Todo(task, false);
-        tasks.add(newTask);
+        tasks.addTask(newTask);
 
         System.out.println(
                 APleaseBot.LINE

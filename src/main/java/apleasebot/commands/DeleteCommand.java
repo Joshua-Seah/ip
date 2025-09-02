@@ -30,8 +30,8 @@ public class DeleteCommand implements Command {
             throw new IllegalBotArgumentException("Item out of bounds!", input); // array out of bounds
         }
 
-        String removed = tasks.get(num - 1).toString();
-        tasks.remove(num - 1);
+        String removed = tasks.getTask(num - 1).toString();
+        tasks.removeTask(num - 1);
 
         System.out.println(
                 APleaseBot.LINE

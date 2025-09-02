@@ -65,7 +65,7 @@ public class Storage {
         ArrayList<String> entries = new ArrayList<>();
         int len = taskList.getItemCount();
         for (int i = 0; i < len; i++) {
-            entries.add(taskList.get(i).translate());
+            entries.add(taskList.getTask(i).translateTaskToText());
         }
         try {
             Files.write(dataPath, entries);

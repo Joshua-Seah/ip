@@ -9,11 +9,11 @@ public class Todo extends Task {
     }
     @Override
     public String toString() {
-        return "[T] " + (isDone ? "[X] " : "[ ] ") + name;
+        return "[T] " + (isDone ? "[X] " : "[ ] ") + desc;
     }
 
     @Override
-    public String translate() {
-        return "T," + this.done() + "," + this.name;
+    public String translateTaskToText() {
+        return "T," + this.checkDone() + "," + this.desc;
     }
 }

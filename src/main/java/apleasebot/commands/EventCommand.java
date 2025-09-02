@@ -63,7 +63,7 @@ public class EventCommand implements Command {
         }
 
         Task newTask = new Event(task, false, TimeFormatter.getStandard(startTime), TimeFormatter.getStandard(endTime));
-        tasks.add(newTask);
+        tasks.addTask(newTask);
 
         System.out.println(
                 APleaseBot.LINE
