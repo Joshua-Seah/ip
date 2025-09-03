@@ -17,7 +17,7 @@ public class MarkCommand implements Command {
     }
 
     @Override
-    public void execute(TaskList tasks) {
+    public String execute(TaskList tasks) {
         if (input.length() < 5) {
             throw new IllegalBotArgumentException("No argument found!", input); // no argument
         }
@@ -33,11 +33,9 @@ public class MarkCommand implements Command {
 
         tasks.getTask(num - 1).markDone();
 
-        System.out.println(
-                APleaseBot.LINE
-                        + "Nice! I've marked this task as done:\n"
-                        + tasks.getTask(num - 1).toString() + "\n"
-                        + APleaseBot.LINE
-        );
+        return APleaseBot.LINE
+                + "Nice! I've marked this task as done:\n"
+                + tasks.getTask(num - 1).toString() + "\n"
+                + APleaseBot.LINE;
     }
 }

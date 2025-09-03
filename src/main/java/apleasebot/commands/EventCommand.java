@@ -40,7 +40,7 @@ public class EventCommand implements Command {
     }
 
     @Override
-    public void execute(TaskList tasks) {
+    public String execute(TaskList tasks) {
         if (input.length() < 6) {
             throw new IllegalBotArgumentException("No argument found!", input); // no argument
         }
@@ -65,12 +65,10 @@ public class EventCommand implements Command {
         Task newTask = new Event(task, false, TimeFormatter.getStandard(startTime), TimeFormatter.getStandard(endTime));
         tasks.addTask(newTask);
 
-        System.out.println(
-                APleaseBot.LINE
-                        + "Got it. I've added this task:\n"
-                        + "  " + newTask.toString() + "\n"
-                        + "Now you have " + tasks.getItemCount() + " tasks in the list" + "\n"
-                        + APleaseBot.LINE
-        );
+        return APleaseBot.LINE
+                + "Got it. I've added this task:\n"
+                + "  " + newTask.toString() + "\n"
+                + "Now you have " + tasks.getItemCount() + " tasks in the list" + "\n"
+                + APleaseBot.LINE;
     }
 }

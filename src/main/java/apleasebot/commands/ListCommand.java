@@ -10,10 +10,10 @@ import apleasebot.ui.APleaseBot;
 public class ListCommand implements Command {
 
     @Override
-    public void execute(TaskList tasks) {
+    public String execute(TaskList tasks) {
         if (tasks.getItemCount() < 1) {
             throw new DataException("No items loaded/stored yet");
         }
-        System.out.println(APleaseBot.LINE + tasks.list() + APleaseBot.LINE);
+        return APleaseBot.LINE + tasks.list() + APleaseBot.LINE;
     }
 }

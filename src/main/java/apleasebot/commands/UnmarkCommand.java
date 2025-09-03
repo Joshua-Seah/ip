@@ -18,7 +18,7 @@ public class UnmarkCommand implements Command {
     }
 
     @Override
-    public void execute(TaskList tasks) {
+    public String execute(TaskList tasks) {
         if (input.length() < 7) {
             throw new IllegalBotArgumentException("No argument found!", input); // no argument
         }
@@ -33,11 +33,9 @@ public class UnmarkCommand implements Command {
         }
         tasks.getTask(num - 1).markUndone();
 
-        System.out.println(
-                APleaseBot.LINE
-                        + "Ok! I've marked this task as not done yet:\n"
-                        + tasks.getTask(num - 1).toString() + "\n"
-                        + APleaseBot.LINE
-        );
+        return APleaseBot.LINE
+                + "Ok! I've marked this task as not done yet:\n"
+                + tasks.getTask(num - 1).toString() + "\n"
+                + APleaseBot.LINE;
     }
 }

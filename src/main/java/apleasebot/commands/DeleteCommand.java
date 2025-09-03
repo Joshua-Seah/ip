@@ -17,7 +17,7 @@ public class DeleteCommand implements Command {
     }
 
     @Override
-    public void execute(TaskList tasks) {
+    public String execute(TaskList tasks) {
         if (input.length() < 7) {
             throw new IllegalBotArgumentException("No argument found!", input); // no argument
         }
@@ -33,12 +33,10 @@ public class DeleteCommand implements Command {
         String removed = tasks.getTask(num - 1).toString();
         tasks.removeTask(num - 1);
 
-        System.out.println(
-                APleaseBot.LINE
-                        + "Got it. I've removed this task: \n"
-                        + "  " + removed + "\n"
-                        + "Now you have " + tasks.getItemCount() + " tasks in the list" + "\n"
-                        + APleaseBot.LINE
-        );
+        return APleaseBot.LINE
+                + "Got it. I've removed this task: \n"
+                + "  " + removed + "\n"
+                + "Now you have " + tasks.getItemCount() + " tasks in the list" + "\n"
+                + APleaseBot.LINE;
     }
 }
