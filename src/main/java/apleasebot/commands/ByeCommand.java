@@ -17,8 +17,8 @@ public class ByeCommand implements Command {
     }
 
     @Override
-    public void execute(TaskList taskList) {
+    public String execute(TaskList taskList) {
         storage.close(taskList);
-        System.out.println(APleaseBot.LINE + APleaseBot.CLOSE + APleaseBot.LINE);
+        return APleaseBot.LINE + APleaseBot.CLOSE + APleaseBot.LINE;
     }
 }

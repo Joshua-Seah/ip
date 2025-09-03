@@ -17,7 +17,8 @@ public class APleaseBot {
 
     public static final String LINE = "________________________________________\n";
 
-    public static final String GREETING = "Hello! I'm APleaseBot\n" + "What can I do for you?\n";
+    public static final String GREETING = "Hello! I'm APleaseBot\n" + "What can I do for you?\n"
+            + "You may use the 'help' keyword to display a list of commands.\n";
 
     public static final String CLOSE = "Bye. Hope to see you again soon!\n";
 
@@ -61,6 +62,20 @@ public class APleaseBot {
             }
         }
         ui.close();
+    }
+
+    public String getResponse(String input) {
+        String output = "";
+        try {
+            Command command = Parser.parse(input, storage);
+            output = command.execute(taskList); // needs to return me a String now
+            if (command instanceof ByeCommand) {
+                // Respond and close app
+            }
+        } catch (Exception e) {
+            return LINE + "Something went wrong!\n" + e.getMessage() + "\n" + LINE;
+        }
+        return output;
     }
 
     public static void main(String[] args) throws APleaseBotException, FileNotFoundException {

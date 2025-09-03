@@ -19,7 +19,7 @@ public class ToDoCommand implements Command {
     }
 
     @Override
-    public void execute(TaskList tasks) {
+    public String execute(TaskList tasks) {
         if (input.length() < 5) {
             throw new IllegalBotArgumentException("No argument found!", input); // no argument
         }
@@ -29,12 +29,10 @@ public class ToDoCommand implements Command {
         Task newTask = new Todo(task, false);
         tasks.addTask(newTask);
 
-        System.out.println(
-                APleaseBot.LINE
-                        + "Got it. I've added this task:\n"
-                        + "  " + newTask.toString() + "\n"
-                        + "Now you have " + tasks.getItemCount() + " tasks in the list" + "\n"
-                        + APleaseBot.LINE
-        );
+        return APleaseBot.LINE
+                + "Got it. I've added this task:\n"
+                + "  " + newTask.toString() + "\n"
+                + "Now you have " + tasks.getItemCount() + " tasks in the list" + "\n"
+                + APleaseBot.LINE;
     }
 }
