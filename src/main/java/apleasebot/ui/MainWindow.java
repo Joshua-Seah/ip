@@ -15,20 +15,18 @@ import javafx.util.Duration;
  * Controller for the main GUI.
  */
 public class MainWindow extends AnchorPane {
-    @FXML
-    private ScrollPane scrollPane;
-    @FXML
-    private VBox dialogContainer;
-    @FXML
-    private TextField userInput;
-    @FXML
-    private Button sendButton;
-
     private APleaseBot aPleaseBot;
-
     private final Image userImage = new Image(this.getClass().getResourceAsStream("/images/APlease.png"));
     private final Image aPleaseBotImage = new Image(this.getClass().getResourceAsStream("/images/APlus.png"));
 
+    @FXML
+    private Button sendButton;
+    @FXML
+    private ScrollPane scrollPane;
+    @FXML
+    private TextField userInput;
+    @FXML
+    private VBox dialogContainer;
     @FXML
     public void initialize() {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
@@ -37,7 +35,9 @@ public class MainWindow extends AnchorPane {
     /** Injects the APleaseBot instance */
     public void setBot(APleaseBot b) {
         aPleaseBot = b;
+        assert aPleaseBot != null;
         String openingMsg = APleaseBot.LINE + APleaseBot.GREETING + APleaseBot.LINE;
+        assert userImage.getClass().equals(Image.class);
         dialogContainer.getChildren().add(
                 DialogBox.getBotDialog(openingMsg, aPleaseBotImage)
         );
@@ -57,6 +57,7 @@ public class MainWindow extends AnchorPane {
             delay.setOnFinished(event -> Platform.exit());
             delay.play();
         }
+        assert userImage.getClass().equals(Image.class);
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
                 DialogBox.getBotDialog(response, aPleaseBotImage)
