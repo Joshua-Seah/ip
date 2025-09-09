@@ -1,8 +1,5 @@
 package apleasebot.tasks;
 
-import apleasebot.exceptions.APleaseBotException;
-import apleasebot.exceptions.DataException;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +11,7 @@ import apleasebot.exceptions.DataException;
  * Class that aggregates the different tasks and provide some methods to use
  */
 public class TaskList {
-    private ArrayList<Task> tasks = new ArrayList<>();
+    private final ArrayList<Task> tasks = new ArrayList<>();
 
     /**
      * Default Constructor for an empty TaskList object
@@ -56,18 +53,37 @@ public class TaskList {
         }
     }
 
+    /**
+     * Function that adds a task to the tasklist
+     * @param task Task object to be added
+     */
     public void addTask(Task task) {
         this.tasks.add(task);
     }
 
+    /**
+     * Function that removes a task from the tasklist
+     * @param index Index of Task to be removed
+     */
     public void removeTask(int index) {
+        assert index >= 0 && index < tasks.size();
         this.tasks.remove(index);
     }
 
+    /**
+     * Function that retrieves a task from the tasklist
+     * @param index Index of Task to be retrieved
+     * @return returns a Task
+     */
     public Task getTask(int index) {
+        assert index >= 0 && index < tasks.size();
         return this.tasks.get(index);
     }
 
+    /**
+     * Function that gets the size of the tasklist
+     * @return Integer size of the tasklist
+     */
     public int getItemCount() {
         return this.tasks.size();
     }
@@ -87,6 +103,11 @@ public class TaskList {
         return sb.toString();
     }
 
+    /**
+     * Function to convert parsed boolean values in txt file to actual boolean values to be used in Task objects
+     * @param b Parsed boolean value from txt file
+     * @return Boolean to be used in Task objects
+     */
     private boolean boolify(String b) {
         int i = Integer.parseInt(b);
         if (i == 0) {
@@ -112,7 +133,6 @@ public class TaskList {
                         .map(Task::translateTaskToText)
                         .toList()
         );
-
         return returnList;
     }
 }

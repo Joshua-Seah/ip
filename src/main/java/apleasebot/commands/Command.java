@@ -16,9 +16,8 @@ public interface Command {
      * @return Boolean value
      */
     default boolean isInt(String s, int bIdx) {
-        int x = 0;
         try {
-            x = Integer.parseInt(s.substring(bIdx));
+            Integer.parseInt(s.substring(bIdx));
         } catch (Exception e) {
             return false;
         }
