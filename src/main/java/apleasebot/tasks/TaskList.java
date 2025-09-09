@@ -11,6 +11,9 @@ import apleasebot.exceptions.DataException;
  * Class that aggregates the different tasks and provide some methods to use
  */
 public class TaskList {
+    private static final String DEADLINE = "D";
+    private static final String EVENT = "E";
+    private static final String TASK = "T";
     private final ArrayList<Task> tasks = new ArrayList<>();
 
     /**
@@ -35,16 +38,17 @@ public class TaskList {
         while (i < numOfElements) {
             String[] str = list.get(i).split(",");
             switch (str[0]) {
-            case "T":
+            case TASK:
                 this.addTask(new Todo(str[2], boolify(str[1])));
                 i++;
                 continue;
-            case "D":
+            case DEADLINE:
                 this.addTask(new Deadline(str[2], boolify(str[1]), LocalDateTime.parse(str[3])));
                 i++;
                 continue;
-            case "E":
-                this.addTask(new Event(str[2], boolify(str[1]), LocalDateTime.parse(str[3]), LocalDateTime.parse(str[4])));
+            case EVENT:
+                this.addTask(new Event(str[2], boolify(str[1]), LocalDateTime.parse(str[3]),
+                        LocalDateTime.parse(str[4])));
                 i++;
                 continue;
             default:
@@ -129,10 +133,11 @@ public class TaskList {
         }
         returnList = new TaskList(
                 copiedList.tasks.stream()
-                        .filter(task -> task.desc.contains(keyphrase))
-                        .map(Task::translateTaskToText)
-                        .toList()
+                        .filter(task -> task.desc.contains(keyphrase)) // Filter tasks that contain keyphrase
+                        .map(Task::translateTaskToText) // Translates filtered tasks to storage text
+                        .toList() // Convert to List to be used in TaskList constructor
         );
+
         return returnList;
     }
 }

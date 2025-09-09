@@ -19,17 +19,18 @@ public class UnmarkCommand implements Command {
 
     @Override
     public String execute(TaskList tasks) {
+        /* Checks if argument was inputted */
         if (input.length() < 7) {
-            throw new IllegalBotArgumentException("No argument found!", input); // no argument
+            throw new IllegalBotArgumentException("No argument found!", input);
         }
-        if (!isInt(input, 7)) {
-            throw new IllegalBotArgumentException("Argument is not integer!" , input); // non-integer argument
+        if (isNotInt(input, 7)) {
+            throw new IllegalBotArgumentException("Argument is not integer!" , input);
         }
 
         int num = Integer.parseInt(input.substring(7));
 
-        if (num < 1 || num > tasks.getItemCount()) {
-            throw new IllegalBotArgumentException("Item out of bounds!", input); // index out of bounds of list
+        if (isOutOfBounds(num, tasks)) {
+            throw new IllegalBotArgumentException("Item out of bounds!", input);
         }
         tasks.getTask(num - 1).markUndone();
 

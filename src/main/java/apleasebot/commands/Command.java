@@ -15,12 +15,16 @@ public interface Command {
      * @param bIdx The beginning index of the supposed integer
      * @return Boolean value
      */
-    default boolean isInt(String s, int bIdx) {
+    default boolean isNotInt(String s, int bIdx) {
         try {
             Integer.parseInt(s.substring(bIdx));
         } catch (Exception e) {
-            return false;
+            return true;
         }
-        return true;
+        return false;
+    }
+
+    default boolean isOutOfBounds(int num, TaskList tasks) {
+        return num < 1 || num > tasks.getItemCount();
     }
 }

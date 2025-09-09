@@ -50,9 +50,10 @@ public class MainWindow extends AnchorPane {
     @FXML
     private void handleUserInput() {
         String input = userInput.getText();
-        String response = aPleaseBot.getResponse(input); // Change this for own implementation
+        String response = aPleaseBot.getResponse(input);
         if (response.equals(APleaseBot.LINE + APleaseBot.CLOSE + APleaseBot.LINE)) {
             userInput.setDisable(true);
+            /* Intentional pause in seconds to let user read response */
             PauseTransition delay = new PauseTransition(Duration.seconds(3));
             delay.setOnFinished(event -> Platform.exit());
             delay.play();

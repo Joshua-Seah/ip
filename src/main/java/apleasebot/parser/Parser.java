@@ -30,6 +30,7 @@ public class Parser {
      * @throws APleaseBotException Generic exception that can be thrown related to the command creation and parsing
      */
     public static Command parse(String input, Storage data) throws APleaseBotException {
+        /* Deliberate choice not to use switch case for first 3 if-blocks to keep the method standardised */
         if (input.equals("bye")) {
             return new ByeCommand(data);
         }

@@ -11,7 +11,7 @@ import apleasebot.exceptions.WrongTimeFormatException;
 public class TimeFormatter {
     public static final DateTimeFormatter DISPLAY_FORMAT_DATE = DateTimeFormatter.ofPattern("dd MMM yy");
     public static final DateTimeFormatter DISPLAY_FORMAT_TIME = DateTimeFormatter.ofPattern("dd MMM yy HH:mm a");
-
+    private static final DateTimeFormatter INPUT_TIME_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm a");
     /**
      * Method that converts my String time to LocalDateTine
      * @param in String time
@@ -24,7 +24,7 @@ public class TimeFormatter {
             if (in.length() == 10) {
                 in += " 00:00 am";
             }
-            out = LocalDateTime.parse(in, DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm a"));
+            out = LocalDateTime.parse(in, INPUT_TIME_FORMAT);
         } catch (Exception e) {
             throw new WrongTimeFormatException("Oops wrong date format! Try YYYY-MM-DD HH:MM am/pm");
         }
