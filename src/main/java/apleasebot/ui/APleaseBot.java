@@ -65,13 +65,10 @@ public class APleaseBot {
     }
 
     public String getResponse(String input) {
-        String output = "";
+        String output;
         try {
             Command command = Parser.parse(input, storage);
-            output = command.execute(taskList); // needs to return me a String now
-            if (command instanceof ByeCommand) {
-                // Respond and close app
-            }
+            output = command.execute(taskList);
         } catch (Exception e) {
             return LINE + "Something went wrong!\n" + e.getMessage() + "\n" + LINE;
         }

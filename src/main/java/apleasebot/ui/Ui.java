@@ -6,15 +6,12 @@ import java.util.Scanner;
  * Class that encapsulates the logic required to intake user commands
  */
 public class Ui {
-    // fields
     private final Scanner scanner;
 
-    // constructor
     public Ui() {
         this.scanner = new Scanner(System.in);
     }
 
-    // methods
     public Scanner start() {
         return scanner;
     }

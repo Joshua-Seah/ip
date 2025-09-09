@@ -13,7 +13,7 @@ import javafx.stage.Stage;
  */
 public class Main extends Application {
 
-    private APleaseBot aPleaseBot = new APleaseBot("src/data/APleaseBot.txt");
+    private final APleaseBot aPleaseBot = new APleaseBot("src/data/APleaseBot.txt");
 
     @Override
     public void start(Stage stage) {
@@ -22,7 +22,7 @@ public class Main extends Application {
             AnchorPane ap = fxmlLoader.load();
             Scene scene = new Scene(ap);
             stage.setScene(scene);
-            fxmlLoader.<MainWindow>getController().setBot(aPleaseBot); // inject the Duke instance
+            fxmlLoader.<MainWindow>getController().setBot(aPleaseBot); // inject the APleaseBot instance
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
