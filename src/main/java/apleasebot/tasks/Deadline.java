@@ -31,4 +31,9 @@ public class Deadline extends Task {
     public String translateTaskToText() {
         return "D," + this.checkDone() + "," + this.desc + "," + this.completeBy;
     }
+
+    @Override
+    public LocalDateTime getTime() {
+        return completeBy;
+    }
 }

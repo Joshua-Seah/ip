@@ -14,6 +14,7 @@ public class ListCommand implements Command {
         if (tasks.getItemCount() < 1) {
             throw new DataException("No items loaded/stored yet");
         }
+        tasks.sort();
         return APleaseBot.LINE + tasks.list() + APleaseBot.LINE;
     }
 }

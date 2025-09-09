@@ -2,6 +2,7 @@ package apleasebot.tasks;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import apleasebot.exceptions.APleaseBotException;
@@ -15,6 +16,26 @@ public class TaskList {
     private static final String EVENT = "E";
     private static final String TASK = "T";
     private final ArrayList<Task> tasks = new ArrayList<>();
+
+    private static class TaskComparer implements Comparator<Task> {
+        @Override
+        public int compare(Task t1, Task t2) {
+            if (isNull(t1) && isNull(t2)) {
+                String t1Desc = t1.getDesc();
+                String t2Desc = t2.getDesc();
+                return t1Desc.charAt(0) - t2Desc.charAt(0);
+            } else if (isNull(t1)) { // Time sorted ahead of description
+                return 1;
+            } else if (isNull(t2)) {
+                return -1;
+            }
+            return t1.getTime().compareTo(t2.getTime());
+        }
+
+        private boolean isNull(Task t) {
+            return t.getTime() == null;
+        }
+    }
 
     /**
      * Default Constructor for an empty TaskList object
@@ -139,5 +160,9 @@ public class TaskList {
         );
 
         return returnList;
+    }
+
+    public void sort() {
+        this.tasks.sort(new TaskComparer());
     }
 }

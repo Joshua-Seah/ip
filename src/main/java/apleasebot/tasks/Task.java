@@ -1,5 +1,7 @@
 package apleasebot.tasks;
 
+import java.time.LocalDateTime;
+
 /**
  * Abstract class to declare what methods Tasks should implement
  * Also provides some methods for the children classes to inherit
@@ -41,6 +43,14 @@ public abstract class Task {
     };
 
     /**
+     * Method that returns Task description for sorting purposes
+     * @return String field that stores task description
+     */
+    public String getDesc() {
+        return this.desc;
+    }
+
+    /**
      * Method to parse task to text for storage
      * @return Parsed task
      */
@@ -51,4 +61,10 @@ public abstract class Task {
      * @return String message to user
      */
     public abstract String toString();
+
+    /**
+     * Method to return time for sorting purposes
+     * @return LocalDateTime field if there is one
+     */
+    public abstract LocalDateTime getTime();
 }

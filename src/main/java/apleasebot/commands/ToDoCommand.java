@@ -27,6 +27,7 @@ public class ToDoCommand implements Command {
 
         Task newTask = new Todo(task, false);
         tasks.addTask(newTask);
+        tasks.sort();
 
         return APleaseBot.LINE
                 + "Got it. I've added this task:\n"

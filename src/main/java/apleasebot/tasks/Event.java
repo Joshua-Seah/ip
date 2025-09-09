@@ -33,4 +33,9 @@ public class Event extends Task {
     public String translateTaskToText() {
         return "E," + this.checkDone() + "," + this.desc + "," + this.startTime + "," + this.endTime;
     }
+
+    @Override
+    public LocalDateTime getTime() {
+        return endTime;
+    }
 }
