@@ -25,6 +25,7 @@ public class FindCommand implements Command {
         }
         String keyphrase = input.substring(5);
         TaskList filteredTasks = tasks.search(keyphrase);
+        filteredTasks.sort();
 
         if (tasks.getItemCount() < 1) {
             throw new DataException("No items loaded/stored yet");

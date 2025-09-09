@@ -1,5 +1,7 @@
 package apleasebot.tasks;
 
+import java.time.LocalDateTime;
+
 /**
  * Encapsulates the logic for the Todo Task
  */
@@ -15,5 +17,10 @@ public class Todo extends Task {
     @Override
     public String translateTaskToText() {
         return "T," + this.checkDone() + "," + this.desc;
+    }
+
+    @Override
+    public LocalDateTime getTime() {
+        return null;
     }
 }

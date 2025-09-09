@@ -44,6 +44,7 @@ public class DeadlineCommand implements Command {
 
         Task newTask = new Deadline(task, false, TimeFormatter.getStandard(deadline));
         tasks.addTask(newTask);
+        tasks.sort();
 
 
         return APleaseBot.LINE
