@@ -8,10 +8,8 @@ import apleasebot.ui.Storage;
  * Encapsulates the logic that is run when the user types 'bye'
  */
 public class ByeCommand implements Command {
-    // fields
     private final Storage storage;
 
-    // constructor
     public ByeCommand(Storage storage) {
         this.storage = storage;
     }

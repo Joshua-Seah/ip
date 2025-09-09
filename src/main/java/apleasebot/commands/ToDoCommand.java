@@ -10,18 +10,17 @@ import apleasebot.ui.APleaseBot;
  * Encapsulates the logic for when a user says todo
  */
 public class ToDoCommand implements Command {
-    // fields
     private final String input;
 
-    // constructor
     public ToDoCommand(String input) {
         this.input = input;
     }
 
     @Override
     public String execute(TaskList tasks) {
+        /* Checks if argument is indicated */
         if (input.length() < 5) {
-            throw new IllegalBotArgumentException("No argument found!", input); // no argument
+            throw new IllegalBotArgumentException("No argument found!", input);
         }
 
         String task = input.substring(5);
