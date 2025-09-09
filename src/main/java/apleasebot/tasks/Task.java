@@ -18,15 +18,37 @@ public abstract class Task {
         this.isDone = isDone;
     }
 
+    /**
+     * Method to change isDone to true
+     */
     public void markDone() {
         this.isDone = true;
     }
+
+    /**
+     * Method to change isDone to false
+     */
     public void markUndone() {
         this.isDone = false;
     }
+
+    /**
+     * Method to return parsed boolean for storage
+     * @return 0 for false, 1 for true
+     */
     public int checkDone() {
         return this.isDone ? 1 : 0;
     };
+
+    /**
+     * Method to parse task to text for storage
+     * @return Parsed task
+     */
     public abstract String translateTaskToText();
+
+    /**
+     * Method to parse task for display to user
+     * @return String message to user
+     */
     public abstract String toString();
 }
